@@ -21,4 +21,5 @@ A three-stage network with per-stage confidence, a dynamic GNN, and sparse atten
     </div>
 </div>
 
-Paper entry: [Publications](/publications/). Code and video links will be added when they are public.
+- Paper: [Publications](/publications/)
+- Code: [HITSZ-NRSL/RefineNet](https://github.com/HITSZ-NRSL/RefineNet)

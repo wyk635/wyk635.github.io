@@ -6,7 +6,7 @@ importance: 4
 category: internship
 ---
 
-Internship work at **自变量空间计算与移动部** (2026.04–present).
+Internship work at **X Square Robot (自变量机器人)**, Spatial Computing and Mobility Department (2026.04–present).
 
 - Built a **VLN** navigation agent with ReAct, memory, reflection, and exploration modules for multi-turn, long-horizon mobile-robot tasks.
 - Built an interactive **3D Gaussian Splatting** mobile simulator and closed the loop with the VLN agent for verification.

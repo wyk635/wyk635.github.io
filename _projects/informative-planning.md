@@ -11,4 +11,5 @@ Second-author paper in **IEEE Robotics and Automation Letters (2026)**.
 
 The work studies informative planning for aerial multi-target search and tracking with an attention-based hybrid belief reinforcement learning policy.
 
-- Paper: [https://doi.org/10.1109/LRA.2026.3700661](https://doi.org/10.1109/LRA.2026.3700661)
+- IEEE Xplore: [https://ieeexplore.ieee.org/document/11551828/](https://ieeexplore.ieee.org/document/11551828/)
+- DOI: [https://doi.org/10.1109/LRA.2026.3700661](https://doi.org/10.1109/LRA.2026.3700661)
