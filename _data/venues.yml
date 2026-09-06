@@ -1,9 +1,11 @@
-"AJP":
-  url: https://aapt.scitation.org/journal/ajp
+"IROS":
+  url: https://www.iros2026.org/
+  color: "#b31b1b"
+
+"RA-L":
+  url: https://www.ieee-ras.org/publications/ra-l
   color: "#00369f"
 
-"PhysRev":
-  url: https://journals.aps.org/
-
-"Vision":
-  color: "#009f36"
+"JSEN":
+  url: https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=7361
+  color: "#555555"
