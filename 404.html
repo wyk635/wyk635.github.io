@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Yike Wu</title>
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#05070d" />
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #05070d;
+        --ink: #e9edf6;
+        --ink-2: #a8b3c7;
+        --ink-3: #737f96;
+        --line: rgba(255, 255, 255, 0.1);
+        --accent: #5eead4;
+      }
+      @media (prefers-color-scheme: light) {
+        :root {
+          color-scheme: light;
+          --bg: #f5f6f8;
+          --ink: #080d18;
+          --ink-2: #3d4759;
+          --ink-3: #626d80;
+          --line: rgba(10, 17, 34, 0.12);
+          --accent: #0b7d72;
+        }
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100svh;
+        display: grid;
+        place-items: center;
+        padding: 2rem;
+        background: radial-gradient(60% 50% at 70% 0%, color-mix(in srgb, var(--accent) 10%, transparent), transparent 70%),
+          var(--bg);
+        color: var(--ink);
+        font-family: "Inter", -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+        line-height: 1.65;
+        -webkit-font-smoothing: antialiased;
+      }
+      main {
+        width: min(520px, 100%);
+      }
+      .mark {
+        display: grid;
+        place-items: center;
+        width: 46px;
+        height: 46px;
+        border-radius: 12px;
+        border: 1px solid var(--line);
+        font: 700 0.8rem/1 ui-monospace, SFMono-Regular, Consolas, monospace;
+        letter-spacing: -0.02em;
+        color: var(--accent);
+      }
+      h1 {
+        margin: 1.4rem 0 0;
+        font-size: clamp(1.5rem, 4.5vw, 2rem);
+        letter-spacing: -0.03em;
+        line-height: 1.15;
+      }
+      h1 span {
+        display: block;
+        margin-top: 0.35rem;
+        font-size: 0.62em;
+        font-weight: 400;
+        letter-spacing: 0.22em;
+        color: var(--ink-3);
+      }
+      p {
+        margin: 1.1rem 0 0;
+        color: var(--ink-2);
+        font-size: 0.95rem;
+      }
+      p + p {
+        margin-top: 0.45rem;
+        color: var(--ink-3);
+        font-size: 0.88rem;
+      }
+      .links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+        margin-top: 1.9rem;
+      }
+      a {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.55rem 0.95rem;
+        border-radius: 9px;
+        border: 1px solid var(--line);
+        color: var(--ink-2);
+        font-size: 0.84rem;
+        text-decoration: none;
+        transition: color 0.2s, border-color 0.2s;
+      }
+      a:hover {
+        color: var(--ink);
+        border-color: var(--accent);
+      }
+      a.primary {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: #032420;
+        font-weight: 600;
+      }
+      a.primary:hover {
+        color: #032420;
+        opacity: 0.92;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="mark">YW</div>
+      <h1>Yike Wu<span>吴逸坷</span></h1>
+      <p>This site is being rebuilt. It will be back shortly.</p>
+      <p>网站正在改版，稍后回来。有事可以直接邮件联系。</p>
+      <div class="links">
+        <a class="primary" href="mailto:wuyike1122@outlook.com">wuyike1122@outlook.com</a>
+        <a href="https://github.com/wyk635" rel="noopener">GitHub</a>
+        <a href="https://orcid.org/0009-0007-6688-6878" rel="noopener">ORCID</a>
+      </div>
+    </main>
+  </body>
+</html>
