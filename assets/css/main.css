@@ -2029,6 +2029,12 @@ html[data-lang="zh"] [lang="en"] {
   padding: clamp(6px, 1.1vw, 16px);
 }
 
+/* figures are slide captures flattened on white, so give them a white plate —
+   a dark plate would frame them with a visible border */
+.proj-figure .plate {
+  background: #fff;
+}
+
 /* a lone figure can take its natural height — the fixed plate is only needed
    to keep side-by-side pairs (and videos) on the same baseline */
 .proj-figs:not(.proj-figs--two) .plate {

@@ -62,8 +62,8 @@ tools/*.py              ← 素材与自检脚本（不用上线）
 全部来自 `个人介绍.pptx`：
 
 ```powershell
-python tools/extract-media.py       # 把 PPT 里的图片/视频抽到 _media/
-python tools/build-project-images.py# 截图 → assets/img/projects/*.webp
+python tools/extract-media.py       # 把 PPT 里的视频抽到 _media/（做视频时才需要）
+python tools/build-project-images.py# 截图 → assets/img/projects/*.webp（直接读 PPTX，透明区域压到白底）
 python tools/build-video.py         # 视频 → assets/video/*.mp4（720p 左右）
 python tools/shrink-video.py        # 两段长视频再压到 480p
 python tools/cutout-portrait.py     # 白底人像 → 透明背景 profile.webp
