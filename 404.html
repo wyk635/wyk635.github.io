@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>404 — Yike Wu</title>
+    <meta name="robots" content="noindex" />
+    <style>
+      :root {
+        --bg: #05070d;
+        --ink: #e9edf6;
+        --ink-2: #a8b3c7;
+        --line: rgba(255, 255, 255, 0.12);
+        --accent: #5eead4;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100svh;
+        display: grid;
+        place-items: center;
+        padding: 2rem;
+        background:
+          radial-gradient(60% 50% at 70% 0%, rgba(94, 234, 212, 0.12), transparent 70%),
+          var(--bg);
+        color: var(--ink);
+        font-family: "Inter", -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei",
+          sans-serif;
+        line-height: 1.65;
+      }
+      main {
+        width: min(560px, 100%);
+      }
+      .mono {
+        font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+        font-size: 0.7rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--accent);
+      }
+      h1 {
+        margin: 1rem 0 0.6rem;
+        font-size: clamp(1.7rem, 5vw, 2.4rem);
+        letter-spacing: -0.03em;
+        line-height: 1.15;
+      }
+      p {
+        margin: 0 0 1.6rem;
+        color: var(--ink-2);
+      }
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+      }
+      a {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.65rem 1.05rem;
+        border-radius: 10px;
+        border: 1px solid var(--line);
+        color: var(--ink);
+        font-size: 0.88rem;
+        text-decoration: none;
+        transition: border-color 0.2s, background-color 0.2s;
+      }
+      a:hover {
+        border-color: var(--accent);
+      }
+      a.primary {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: #032420;
+        font-weight: 600;
+      }
+      code {
+        font-family: ui-monospace, Consolas, monospace;
+        font-size: 0.85em;
+        color: var(--ink);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p class="mono">Error 404</p>
+      <h1>This page moved.<br />这个页面搬家了。</h1>
+      <p>
+        The site is now a single page — everything lives on the homepage.<br />
+        站点已改成单页，内容都在首页。
+      </p>
+      <div class="actions">
+        <a class="primary" href="/#projects">Projects / 项目</a>
+        <a href="/#publications">Publications / 论文</a>
+        <a href="/">Homepage / 首页</a>
+      </div>
+    </main>
+    <script>
+      // Old al-folio routes → new section anchors (or the Chinese homepage).
+      (function () {
+        var map = {
+          "/publications/": "/#publications",
+          "/publications": "/#publications",
+          "/projects/": "/#projects",
+          "/projects": "/#projects",
+          "/news/": "/#about",
+          "/blog/": "/#about",
+          "/cv/": "/#experience",
+          "/teaching/": "/#experience",
+          "/repositories/": "/#projects",
+          "/zh/": "/?lang=zh",
+          "/zh": "/?lang=zh",
+        };
+        var path = location.pathname.replace(/\/index\.html$/, "/");
+        if (map[path] && map[path] !== "/") {
+          if (path.indexOf("/zh") === 0) {
+            try {
+              localStorage.setItem("yw-lang", "zh");
+            } catch (e) {}
+            location.replace("/");
+            return;
+          }
+          location.replace(map[path]);
+        }
+      })();
+    </script>
+  </body>
+</html>

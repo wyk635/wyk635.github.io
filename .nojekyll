@@ -1,0 +1,2 @@
+# Tells GitHub Pages to serve this directory as-is (no Jekyll build step).
+# Keeping this file makes deploys instant and immune to Liquid/Jekyll quirks.
