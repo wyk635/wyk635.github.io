@@ -72,6 +72,12 @@
         <p class="proj-lede"><span lang="en">A drone sees the whole site but cannot measure it; a ground robot measures precisely but only what is under its wheels. RefineNet turns that pair into dense, <strong>metric</strong> aerial depth.</span><span lang="zh">无人机看得到全场，却量不出尺度；无人车量得准，却只看得到脚下。RefineNet 把两者结合，输出稠密的<strong>度量航拍深度</strong>。</span></p>
         <div class="proj-links"><a class="btn" href="https://github.com/HITSZ-NRSL/RefineNet"><span lang="en">Code on GitHub</span><span lang="zh">GitHub 代码</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" /></svg></a>
           <a class="btn btn--ghost" href="../index.html#publications"><span lang="en">Citation</span><span lang="zh">论文引用</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" /></svg></a></div>
+
+        <dl class="proj-meta">
+          <div><dt><span lang="en">Role</span><span lang="zh">角色</span></dt><dd><span lang="en">First author</span><span lang="zh">第一作者</span></dd></div>
+          <div><dt><span lang="en">Venue</span><span lang="zh">发表</span></dt><dd><span lang="en">IROS 2026</span><span lang="zh">IROS 2026</span></dd></div>
+          <div><dt><span lang="en">Focus</span><span lang="zh">方向</span></dt><dd><span lang="en">Cross-view depth · 3D reconstruction</span><span lang="zh">跨视角深度 · 三维重建</span></dd></div>
+        </dl>
 <figure class="proj-hero">
           <img src="../assets/img/projects/refinenet-framework.webp" alt="RefineNet system overview" width="1400" height="800" loading="eager" decoding="async" />
           <figcaption><span lang="en">System overview — sparse ground LiDAR plus a monocular aerial image</span><span lang="zh">系统框架 —— 稀疏地面 LiDAR + 单目航拍图像</span></figcaption>
@@ -97,7 +103,9 @@
           </div>
         <div class="proj-figs">
           <figure class="proj-figure">
-            <img src="../assets/img/projects/refinenet-improvements.webp" alt="Key design changes in RefineNet" loading="lazy" decoding="async" />
+            <div class="plate">
+              <img src="../assets/img/projects/refinenet-improvements.webp" alt="Key design changes in RefineNet" loading="lazy" decoding="async" />
+            </div>
             <figcaption><span lang="en">Key design choices</span><span lang="zh">关键设计</span></figcaption>
           </figure>
         </div>
@@ -113,15 +121,19 @@
           </div>
         <div class="proj-figs">
           <figure class="proj-figure">
-            <img src="../assets/img/iros2026-fig5b.webp" alt="Qualitative depth comparison" loading="lazy" decoding="async" />
+            <div class="plate">
+              <img src="../assets/img/iros2026-fig5b.webp" alt="Qualitative depth comparison" loading="lazy" decoding="async" />
+            </div>
             <figcaption><span lang="en">Qualitative comparison of predicted depth</span><span lang="zh">深度预测的定性对比</span></figcaption>
           </figure>
         </div>
         <div class="proj-videos">
           <figure class="proj-video">
-            <video controls playsinline preload="none" poster="../assets/video/refinenet.jpg">
-              <source src="../assets/video/refinenet.mp4" type="video/mp4" />
-            </video>
+            <div class="plate">
+              <video controls playsinline preload="none" poster="../assets/video/refinenet.jpg">
+                <source src="../assets/video/refinenet.mp4" type="video/mp4" />
+              </video>
+            </div>
             <figcaption><span lang="en">Reconstruction demo from the same pipeline</span><span lang="zh">同一套流程的重建演示</span></figcaption>
           </figure>
         </div>

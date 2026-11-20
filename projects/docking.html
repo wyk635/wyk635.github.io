@@ -71,6 +71,12 @@
         <h1 class="proj-title"><span lang="en">Multi-vehicle docking &amp; battery swap</span><span lang="zh">多车接驳与换电</span></h1>
         <p class="proj-lede"><span lang="en">Several ground vehicles coordinate to dock a drone and swap its battery — scheduling and avoidance with differentiable physics, benchmarked against EGO-Swarm.</span><span lang="zh">多台无人车协同接驳无人机并完成换电 —— 用可微物理做调度与避障，并与 EGO-Swarm 对比。</span></p>
         <div class="proj-links"><a class="btn btn--ghost" href="../index.html#experience"><span lang="en">Experience</span><span lang="zh">实习经历</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" /></svg></a></div>
+
+        <dl class="proj-meta">
+          <div><dt><span lang="en">Role</span><span lang="zh">角色</span></dt><dd><span lang="en">Algorithm intern</span><span lang="zh">算法实习生</span></dd></div>
+          <div><dt><span lang="en">Venue</span><span lang="zh">单位</span></dt><dd><span lang="en">Meituan · Drone Business</span><span lang="zh">美团 · 无人机业务部</span></dd></div>
+          <div><dt><span lang="en">Period</span><span lang="zh">时间</span></dt><dd><span lang="en">2025.09 — 2025.12</span><span lang="zh">2025.09 — 2025.12</span></dd></div>
+        </dl>
 <figure class="proj-hero">
           <img src="../assets/img/projects/meituan-scene.webp" alt="Docking scenario" width="1400" height="800" loading="eager" decoding="async" />
           <figcaption><span lang="en">Docking scenario — several UGVs, one UAV, one battery pack</span><span lang="zh">接驳场景 —— 多台无人车、一架无人机、一组电池</span></figcaption>
@@ -104,24 +110,14 @@
             <div lang="en"><p>The learned scheduler runs the docking/swap cycle with several vehicles in the same arena. Clips below show the arena and the resulting trajectories.</p></div>
             <div lang="zh"><p>学习得到的调度器可以在同一片场地里、多车同时作业的情况下跑完接驳与换电流程。下面几段是场地与轨迹记录。</p></div>
           </div>
-        <div class="proj-videos proj-videos--two">
+        <div class="proj-videos">
           <figure class="proj-video">
-            <video controls playsinline preload="none" poster="../assets/video/meituan-docking.jpg">
-              <source src="../assets/video/meituan-docking.mp4" type="video/mp4" />
-            </video>
-            <figcaption><span lang="en">Docking run</span><span lang="zh">接驳过程</span></figcaption>
-          </figure>
-          <figure class="proj-video">
-            <video controls playsinline preload="none" poster="../assets/video/meituan-swarm.jpg">
-              <source src="../assets/video/meituan-swarm.mp4" type="video/mp4" />
-            </video>
-            <figcaption><span lang="en">Multi-vehicle scheduling</span><span lang="zh">多车调度</span></figcaption>
-          </figure>
-          <figure class="proj-video">
-            <video controls playsinline preload="none" poster="../assets/video/meituan-planner.jpg">
-              <source src="../assets/video/meituan-planner.mp4" type="video/mp4" />
-            </video>
-            <figcaption><span lang="en">Planner view</span><span lang="zh">规划器视角</span></figcaption>
+            <div class="plate">
+              <video controls playsinline preload="none" poster="../assets/video/meituan-swarm.jpg">
+                <source src="../assets/video/meituan-swarm.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <figcaption><span lang="en">Multi-vehicle scheduling with differentiable physics</span><span lang="zh">可微物理多车调度</span></figcaption>
           </figure>
         </div>
         </section>

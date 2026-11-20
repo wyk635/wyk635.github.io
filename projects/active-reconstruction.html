@@ -71,6 +71,12 @@
         <h1 class="proj-title"><span lang="en">Learning where to look next</span><span lang="zh">主动重建：下一步该看哪儿</span></h1>
         <p class="proj-lede"><span lang="en">Reconstructing a large scene with 3D/2D Gaussian splatting is a trade-off between flight time and coverage. I learn a policy that decides where to look next.</span><span lang="zh">用 3D/2D 高斯泼溅重建大场景，本质是「采集时间」和「覆盖率」的两难。我训练一个策略，让它决定下一步该看哪儿。</span></p>
         <div class="proj-links"><a class="btn btn--ghost" href="../index.html#projects"><span lang="en">All projects</span><span lang="zh">全部项目</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" /></svg></a></div>
+
+        <dl class="proj-meta">
+          <div><dt><span lang="en">Status</span><span lang="zh">状态</span></dt><dd><span lang="en">Ongoing research</span><span lang="zh">进行中的研究</span></dd></div>
+          <div><dt><span lang="en">Period</span><span lang="zh">时间</span></dt><dd><span lang="en">2026 —</span><span lang="zh">2026 —</span></dd></div>
+          <div><dt><span lang="en">Focus</span><span lang="zh">方向</span></dt><dd><span lang="en">Active reconstruction · 3DGS · offline RL</span><span lang="zh">主动重建 · 3DGS · 离线 RL</span></dd></div>
+        </dl>
 <figure class="proj-hero">
           <img src="../assets/img/projects/active-curves.webp" alt="Path length and coverage curves" width="1400" height="800" loading="eager" decoding="async" />
           <figcaption><span lang="en">Path length against coverage under an equal time budget (grey: teacher, blue: BC, red: RL)</span><span lang="zh">相同时长下的路径长度 / 覆盖率曲线（灰：教师，蓝：BC，红：RL）</span></figcaption>
@@ -96,11 +102,15 @@
           </div>
         <div class="proj-figs proj-figs--two">
           <figure class="proj-figure">
-            <img src="../assets/img/projects/active-sampling.webp" alt="Viewpoint sampling baseline" loading="lazy" decoding="async" />
+            <div class="plate">
+              <img src="../assets/img/projects/active-sampling.webp" alt="Viewpoint sampling baseline" loading="lazy" decoding="async" />
+            </div>
             <figcaption><span lang="en">Viewpoint-sampling baseline</span><span lang="zh">视点采样基线</span></figcaption>
           </figure>
           <figure class="proj-figure">
-            <img src="../assets/img/projects/active-policy.webp" alt="Learned policy" loading="lazy" decoding="async" />
+            <div class="plate">
+              <img src="../assets/img/projects/active-policy.webp" alt="Learned policy" loading="lazy" decoding="async" />
+            </div>
             <figcaption><span lang="en">Learned policy</span><span lang="zh">学习得到的策略</span></figcaption>
           </figure>
         </div>
@@ -116,9 +126,11 @@
           </div>
         <div class="proj-videos">
           <figure class="proj-video">
-            <video controls playsinline preload="none" poster="../assets/video/active-recon.jpg">
-              <source src="../assets/video/active-recon.mp4" type="video/mp4" />
-            </video>
+            <div class="plate">
+              <video controls playsinline preload="none" poster="../assets/video/active-recon.jpg">
+                <source src="../assets/video/active-recon.mp4" type="video/mp4" />
+              </video>
+            </div>
             <figcaption><span lang="en">Coverage animation: viewpoint sampling versus the learned policy</span><span lang="zh">覆盖过程动画：视点采样 vs 学习策略</span></figcaption>
           </figure>
         </div>
