@@ -501,16 +501,6 @@
       { passive: true }
     );
 
-    card.addEventListener("click", function () {
-      openProject(card.dataset.project, card);
-    });
-
-    card.addEventListener("keydown", function (e) {
-      if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") {
-        e.preventDefault();
-        openProject(card.dataset.project, card);
-      }
-    });
   });
 
   /* -------------------------------------------------------------- filters */
@@ -536,175 +526,6 @@
       if (grid) grid.dataset.filter = want;
     });
   });
-
-  /* ------------------------------------------------------ project dialog */
-
-  var PROJECTS = {
-    refinenet: {
-      kicker: "IROS 2026 · Research",
-      title: {
-        en: "RefineNet — cross-view depth completion",
-        zh: "RefineNet —— 跨视角深度补全"
-      },
-      en:
-        "<p>Accepted at <strong>IROS 2026</strong> as first-author work. A monocular UAV image has no reliable metric scale; a UGV sees the same scene from the ground with accurate but sparse LiDAR. RefineNet fuses the two.</p>" +
-        "<ul><li>A three-stage network with per-stage confidence estimation.</li><li>A dynamic graph network that re-wires correspondences as the viewpoint changes.</li><li>Sparse attention that propagates ground measurements through occlusion.</li></ul>" +
-        "<p>The result is dense, metric aerial depth, which we use to reconstruct large-scale air-ground scenes.</p>",
-      zh:
-        "<p>以第一作者被 <strong>IROS 2026</strong> 接收。单目航拍图像没有可靠的度量尺度；无人车能从地面看到同一场景，LiDAR 精确但稀疏。RefineNet 把两者融合起来。</p>" +
-        "<ul><li>三阶段网络，每个阶段给出置信度估计。</li><li>动态图网络，随视角变化重新建立对应关系。</li><li>稀疏注意力，把地面测量穿过遮挡传播出去。</li></ul>" +
-        "<p>最终得到稠密的度量航拍深度，用来重建大尺度空地场景。</p>",
-      figs: [
-        {
-          src: "assets/img/iros2026.webp",
-          en: "Teaser — air-ground collaborative reconstruction pipeline",
-          zh: "总览 —— 空地协同重建流程"
-        },
-        {
-          src: "assets/img/iros2026-fig5b.webp",
-          en: "Qualitative comparison of predicted depth",
-          zh: "深度预测的定性对比"
-        }
-      ],
-      links: [
-        { href: "https://github.com/HITSZ-NRSL/RefineNet", en: "Code on GitHub", zh: "GitHub 代码" },
-        { href: "#publications", en: "Citation", zh: "论文引用" }
-      ]
-    },
-    active: {
-      kicker: "Research · Ongoing",
-      title: { en: "Learning where to look next", zh: "主动重建：下一步该看哪儿" },
-      en:
-        "<p>Ongoing research (2026.01 – present) on air–ground <strong>active reconstruction</strong>. Reconstructing a large scene with 3D/2D Gaussian splatting is a two-way squeeze: capture efficiency versus coverage.</p>" +
-        "<ul><li>A viewpoint-sampling baseline that decides where the air–ground team looks next.</li><li>A teacher–BC–RL pipeline: an expert planner generates trajectories, behaviour cloning bootstraps a policy, and offline RL pushes past the teacher.</li><li>Compared on path length and coverage within the same time budget.</li></ul>",
-      zh:
-        "<p>2026.01 至今进行的空地 <strong>主动重建</strong> 研究。用 3D/2D 高斯泼溅重建大场景，本质是「采集效率」和「覆盖率」的两难。</p>" +
-        "<ul><li>基于视点采样的基线方案，决定空地团队下一步看哪里。</li><li>教师–BC–RL 流水线：专家规划器生成轨迹，行为克隆起步，再用离线强化学习超过教师。</li><li>在相同时长下对比路径长度与覆盖率。</li></ul>",
-      figs: [],
-      links: []
-    },
-    vln: {
-      kicker: "Internship · X Square Robot",
-      title: { en: "An agent that plans, remembers, and looks back", zh: "会规划、会记忆的导航智能体" },
-      en:
-        "<p>Internship project at <strong>X Square Robot (自变量机器人)</strong>, Spatial Mobility &amp; Computing, since 2026.04.</p>" +
-        "<ul><li>An <strong>agentic VLN</strong> stack: an agent schedules the underlying navigation (classical and learned) plus tool modules, so the robot can walk a long distance and keep perceiving.</li><li>ReAct-style reasoning, episodic memory and exploration drive multi-turn, long-horizon task navigation.</li><li>An online <strong>scene graph</strong> keeps the room model current — validated on a real robot (whole-floor tidying, fetching a drink) and in simulation (finding the fridge).</li></ul>",
-      zh:
-        "<p>2026.04 起在 <strong>自变量机器人</strong> 空间移动与计算部的实习项目。</p>" +
-        "<ul><li><strong>Agentic VLN</strong>：用 Agent 调度底层导航（传统 / VLN）与各类工具组件，让机器人能长距离行走并持续感知。</li><li>ReAct 式推理、情节记忆与探索，支撑多轮长程任务导航。</li><li>在线 <strong>scene graph</strong> 持续更新房间模型 —— 在真机（全屋捡垃圾、倒咖啡）和仿真（找冰箱）上验证。</li></ul>",
-      figs: [],
-      links: []
-    },
-    meituan: {
-      kicker: "Internship · Meituan",
-      title: { en: "Multi-vehicle docking & battery swap", zh: "多车接驳与换电" },
-      en:
-        "<p>Internship at the <strong>Meituan Drone Business Department</strong> (2025.09 – 2025.12), algorithm strategy team.</p>" +
-        "<ul><li>Scenario: several UGVs docking a UAV and swapping its battery.</li><li>Differentiable physics for multi-vehicle scheduling and obstacle avoidance — trained and deployed the model.</li><li>Tested and tuned <strong>EGO-Swarm</strong> against the differentiable-physics policy on vehicles.</li></ul>",
-      zh:
-        "<p>于 <strong>美团无人机业务部</strong> 实习（2025.09 – 2025.12），算法策略岗。</p>" +
-        "<ul><li>业务场景：无人车多车接驳无人机并换电。</li><li>用可微物理做多车调度与避障，负责模型的训练与部署。</li><li>负责 EGO-Swarm 与可微物理算法的测试与调试。</li></ul>",
-      figs: [],
-      links: []
-    },
-    search: {
-      kicker: "RA-L 2026 · Research",
-      title: { en: "Where to search next", zh: "空中多目标搜索" },
-      en:
-        "<p>Second-author paper in <strong>IEEE Robotics and Automation Letters</strong> (2026).</p>" +
-        "<p>The work studies informative planning for aerial multi-target search and tracking with an attention-based hybrid belief reinforcement learning policy — the belief over target locations is hybrid (discrete + continuous), and the policy decides where to fly next to reduce it fastest.</p>",
-      zh:
-        "<p>第二作者论文，发表于 <strong>IEEE Robotics and Automation Letters</strong>（2026）。</p>" +
-        "<p>研究无人机多目标搜索与跟踪中的信息规划：目标位置信念是“混合”的（离散 + 连续），策略用注意力机制决定下一步飞哪儿能最快压掉不确定性。</p>",
-      figs: [],
-      links: [
-        { href: "https://doi.org/10.1109/LRA.2026.3700661", en: "DOI", zh: "DOI" },
-        { href: "https://ieeexplore.ieee.org/document/11551828/", en: "IEEE Xplore", zh: "IEEE Xplore" }
-      ]
-    }
-  };
-
-  var dialog = $("#projectDialog");
-  var dialogBody = $("#dialogBody");
-  var dialogKicker = $("#dialogKicker");
-
-  function pick(obj, lang) {
-    return (obj && (obj[lang] || obj.en)) || "";
-  }
-
-  function openProject(id, trigger) {
-    var data = PROJECTS[id];
-    if (!data || !dialog || !dialogBody) return;
-    var lang = root.dataset.lang === "zh" ? "zh" : "en";
-
-    var figs = (data.figs || [])
-      .map(function (f) {
-        return (
-          '<figure><img src="' + f.src + '" alt="" loading="lazy" decoding="async" />' +
-          "<figcaption>" + pick(f, lang) + "</figcaption></figure>"
-        );
-      })
-      .join("");
-
-    var links = (data.links || [])
-      .map(function (l) {
-        return (
-          '<a class="pub__link" href="' + l.href + '">' + pick(l, lang) +
-          '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>'
-        );
-      })
-      .join("");
-
-    dialogBody.innerHTML =
-      '<h3 id="dialogTitle"><span lang="en">' + data.title.en + '</span><span lang="zh">' +
-      data.title.zh + "</span></h3>" +
-      '<div lang="en">' + data.en + "</div>" +
-      '<div lang="zh">' + data.zh + "</div>" +
-      (figs ? '<div class="dialog__figures">' + figs + "</div>" : "") +
-      (links ? '<div class="dialog__links">' + links + "</div>" : "");
-
-    if (dialogKicker) dialogKicker.textContent = data.kicker || "Project";
-
-    dialog.__trigger = trigger || null;
-
-    if (typeof dialog.showModal === "function") dialog.showModal();
-    else dialog.setAttribute("open", "");
-
-    var closeBtn = $("#dialogClose");
-    if (closeBtn) closeBtn.focus();
-  }
-
-  function closeProject() {
-    if (!dialog) return;
-    if (dialog.open && typeof dialog.close === "function") dialog.close();
-    else dialog.removeAttribute("open");
-    var t = dialog.__trigger;
-    if (t && typeof t.focus === "function") t.focus();
-  }
-
-  if (dialog) {
-    var closeBtn = $("#dialogClose");
-    if (closeBtn) closeBtn.addEventListener("click", closeProject);
-
-    dialog.addEventListener("click", function (e) {
-      if (e.target === dialog) {
-        closeProject();
-        return;
-      }
-      var anchor = e.target.closest ? e.target.closest("a[href^='#']") : null;
-      if (anchor) closeProject();
-    });
-
-    dialog.addEventListener("cancel", function () {
-      dialog.__trigger = null;
-    });
-
-    dialog.addEventListener("close", function () {
-      var t = dialog.__trigger;
-      dialog.__trigger = null;
-      if (t && typeof t.focus === "function") t.focus();
-    });
-  }
 
   /* --------------------------------------------------------------- bibtex */
 
@@ -1027,7 +848,6 @@
 
   window.__yw = {
     applyTheme: applyTheme,
-    applyLang: applyLang,
-    openProject: openProject
+    applyLang: applyLang
   };
 })();

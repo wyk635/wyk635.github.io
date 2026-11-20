@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>RefineNet — cross-view depth completion · Yike Wu</title>
+    <meta name="description" content="A drone sees the whole site but cannot measure it; a ground robot measures precisely but only what is under its wheels. RefineNet turns that pair into dense, metric aerial depth." />
+    <meta name="theme-color" content="#05070d" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2305070d'/%3E%3Ctext x='32' y='42' font-family='ui-monospace,monospace' font-size='26' font-weight='700' fill='%235eead4' text-anchor='middle'%3EYW%3C/text%3E%3C/svg%3E" />
+    <link rel="preload" href="../assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="../assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <script>
+      (function () {
+        var root = document.documentElement;
+        var stored = null;
+        try { stored = localStorage.getItem("yw-theme"); } catch (e) {}
+        var prefersLight = window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches;
+        root.dataset.theme = stored || (prefersLight ? "light" : "dark");
+        var lang = null;
+        try { lang = localStorage.getItem("yw-lang"); } catch (e) {}
+        var forced = /[?&]lang=(zh|en)\b/.exec(location.search);
+        if (forced) lang = forced[1];
+        if (!lang) lang = (navigator.language || "en").toLowerCase().indexOf("zh") === 0 ? "zh" : "en";
+        root.dataset.lang = lang === "zh" ? "zh" : "en";
+        root.setAttribute("lang", root.dataset.lang === "zh" ? "zh-CN" : "en");
+      })();
+    </script>
+    <noscript><style>[data-reveal]{opacity:1!important;transform:none!important}</style></noscript>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main"><span lang="en">Skip to content</span><span lang="zh">跳到正文</span></a>
+    <div class="progress" aria-hidden="true"><div class="progress__bar" id="progressBar"></div></div>
+
+    <header class="site-header" id="siteHeader">
+      <div class="wrap">
+        <a class="brand" href="../index.html" aria-label="Yike Wu — home">
+          <span class="brand__mark" aria-hidden="true">YW</span>
+          <span class="brand__text">
+            <span class="brand__name">Yike Wu</span>
+            <span class="brand__sub">HIT Shenzhen</span>
+          </span>
+        </a>
+        <nav class="nav" aria-label="Sections">
+          <a class="nav__link" href="../index.html#about"><span class="nav__num">01</span><span lang="en">About</span><span lang="zh">关于</span></a>
+          <a class="nav__link" href="../index.html#projects"><span class="nav__num">02</span><span lang="en">Projects</span><span lang="zh">项目</span></a>
+          <a class="nav__link" href="../index.html#publications"><span class="nav__num">03</span><span lang="en">Publications</span><span lang="zh">论文</span></a>
+          <a class="nav__link" href="../index.html#experience"><span class="nav__num">04</span><span lang="en">Experience</span><span lang="zh">经历</span></a>
+          <a class="nav__link" href="../index.html#contact"><span class="nav__num">05</span><span lang="en">Contact</span><span lang="zh">联系</span></a>
+        </nav>
+        <div class="tools">
+          <button class="icon-btn lang-btn" id="langBtn" type="button" aria-label="Switch language">中</button>
+          <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch theme">
+            <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z" /></svg>
+            <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" /></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="proj-main">
+      <div class="wrap">
+        <a class="crumbs" href="../index.html#projects">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6" /></svg>
+          <span lang="en">All projects</span><span lang="zh">全部项目</span>
+        </a>
+
+        <p class="proj-kicker"><span lang="en">IROS 2026 · First author</span><span lang="zh">IROS 2026 · 第一作者</span></p>
+        <h1 class="proj-title"><span lang="en">RefineNet — cross-view depth completion</span><span lang="zh">RefineNet —— 跨视角深度补全</span></h1>
+        <p class="proj-lede"><span lang="en">A drone sees the whole site but cannot measure it; a ground robot measures precisely but only what is under its wheels. RefineNet turns that pair into dense, <strong>metric</strong> aerial depth.</span><span lang="zh">无人机看得到全场，却量不出尺度；无人车量得准，却只看得到脚下。RefineNet 把两者结合，输出稠密的<strong>度量航拍深度</strong>。</span></p>
+        <div class="proj-links"><a class="btn" href="https://github.com/HITSZ-NRSL/RefineNet"><span lang="en">Code on GitHub</span><span lang="zh">GitHub 代码</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" /></svg></a>
+          <a class="btn btn--ghost" href="../index.html#publications"><span lang="en">Citation</span><span lang="zh">论文引用</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" /></svg></a></div>
+<figure class="proj-hero">
+          <img src="../assets/img/projects/refinenet-framework.webp" alt="RefineNet system overview" width="1400" height="800" loading="eager" decoding="async" />
+          <figcaption><span lang="en">System overview — sparse ground LiDAR plus a monocular aerial image</span><span lang="zh">系统框架 —— 稀疏地面 LiDAR + 单目航拍图像</span></figcaption>
+        </figure>
+<section class="proj-sec" id="s01">
+          <header class="proj-sec__head">
+            <span class="proj-sec__idx">01</span>
+            <h2><span lang="en">Motivation</span><span lang="zh">动机</span></h2>
+          </header>
+          <div class="proj-sec__body">
+            <div lang="en"><p>Aerial imagery is the fastest way to cover a large site, but a single camera only gives depth up to an unknown scale. Ground robots carry LiDAR that is metric but sparse, and they see the scene from below, not from the air.</p><p>The hard part is the <strong>viewpoint change</strong>: matching a top-down image against a ground-level point cloud means handling oblique geometry, occlusion and a large baseline at the same time.</p></div>
+            <div lang="zh"><p>航拍是覆盖大场景最快的方式，但单目相机给出的深度没有绝对尺度。地面机器人有精确但稀疏的 LiDAR，且只能从下往上看，看不到空中视角。</p><p>难点在于<strong>视角差异</strong>：把俯视图像和地平线高度的点云对应起来，要同时处理斜视几何、遮挡和大基线。</p></div>
+          </div>
+        </section>
+        <section class="proj-sec" id="s02">
+          <header class="proj-sec__head">
+            <span class="proj-sec__idx">02</span>
+            <h2><span lang="en">What I built</span><span lang="zh">做了什么</span></h2>
+          </header>
+          <div class="proj-sec__body">
+            <div lang="en"><ul><li>A three-stage network where every stage predicts its own confidence, so unreliable regions get refined instead of trusted.</li><li>A dynamic graph network that re-establishes cross-view correspondences as the relative pose changes.</li><li>Sparse attention that carries ground LiDAR measurements through occlusions into the aerial image.</li></ul><p>The output is dense metric depth, which feeds downstream 3D reconstruction of the whole site.</p></div>
+            <div lang="zh"><ul><li>三阶段网络，每个阶段输出自己的置信度：不可靠的区域被继续精修，而不是被采信。</li><li>动态图网络，在相对位姿变化时重新建立跨视角对应。</li><li>稀疏注意力，把地面 LiDAR 测量穿过遮挡带到航拍图像上。</li></ul><p>输出是稠密、带度量尺度的深度，直接服务整片场地的三维重建。</p></div>
+          </div>
+        <div class="proj-figs">
+          <figure class="proj-figure">
+            <img src="../assets/img/projects/refinenet-improvements.webp" alt="Key design changes in RefineNet" loading="lazy" decoding="async" />
+            <figcaption><span lang="en">Key design choices</span><span lang="zh">关键设计</span></figcaption>
+          </figure>
+        </div>
+        </section>
+        <section class="proj-sec" id="s03">
+          <header class="proj-sec__head">
+            <span class="proj-sec__idx">03</span>
+            <h2><span lang="en">Results</span><span lang="zh">效果</span></h2>
+          </header>
+          <div class="proj-sec__body">
+            <div lang="en"><p>Accepted at <strong>IROS 2026</strong> as first-author work. The comparison below shows predicted depth against the baseline on the same aerial frames.</p></div>
+            <div lang="zh"><p>以第一作者被 <strong>IROS 2026</strong> 接收。下图是在同一批航拍帧上，与基线方法的深度预测对比。</p></div>
+          </div>
+        <div class="proj-figs">
+          <figure class="proj-figure">
+            <img src="../assets/img/iros2026-fig5b.webp" alt="Qualitative depth comparison" loading="lazy" decoding="async" />
+            <figcaption><span lang="en">Qualitative comparison of predicted depth</span><span lang="zh">深度预测的定性对比</span></figcaption>
+          </figure>
+        </div>
+        <div class="proj-videos">
+          <figure class="proj-video">
+            <video controls playsinline preload="none" poster="../assets/video/refinenet.jpg">
+              <source src="../assets/video/refinenet.mp4" type="video/mp4" />
+            </video>
+            <figcaption><span lang="en">Reconstruction demo from the same pipeline</span><span lang="zh">同一套流程的重建演示</span></figcaption>
+          </figure>
+        </div>
+        </section>
+        <nav class="proj-nav" aria-label="Project navigation"><a class="prev" href="../index.html#projects"><small><span lang="en">Back</span><span lang="zh">返回</span></small><span><span lang="en">All projects</span><span lang="zh">全部项目</span></span></a>
+          <a class="next" href="active-reconstruction.html"><small><span lang="en">Next</span><span lang="zh">下一个</span></small><span><span lang="en">Learning where to look next</span><span lang="zh">主动重建：下一步该看哪儿</span></span></a></nav>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <span>© 2026 Yike Wu</span>
+        <span class="mono">
+          <span lang="en">Designed &amp; hand-coded · static, no trackers</span>
+          <span lang="zh">手工设计手写代码 · 纯静态，无追踪</span>
+        </span>
+        <a class="mono" href="../index.html#contact" style="letter-spacing: 0.1em; color: var(--ink-3)">
+          <span lang="en">Contact</span><span lang="zh">联系</span>
+        </a>
+      </div>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 12 5 5L20 6" /></svg>
+      <span id="toastText"></span>
+    </div>
+
+    <script src="../assets/js/main.js" defer></script>
+  </body>
+</html>
